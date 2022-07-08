@@ -1,8 +1,15 @@
 import { Navigate } from "react-router";
-import { getToken } from "./authFunctions";
+import { getToken, getRole } from "./authFunctions";
 
-export const ProtectAuthRoute = ({ children }) => {
+
+export const LoggedOut = ({ children }) => {
   const token = getToken();
-  if (!token) return <Navigate to="/login" replace />;
+  if (token) {
+    return getRole() == "admin" ? (
+      <Navigate to="/admin" replace />
+    ) : (
+      <Navigate to="/user" />
+    );
+  }
   return children;
 };

@@ -6,6 +6,14 @@ export function getToken() {
   return localStorage.getItem("token");
 }
 
+export function removeToken() {
+  localStorage.removeItem("token");
+}
+
+export function removeRole() {
+  localStorage.removeItem("role");
+}
+
 export function setRole(role) {
   localStorage.setItem("role", role);
 }

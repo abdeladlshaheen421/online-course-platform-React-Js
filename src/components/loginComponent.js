@@ -77,7 +77,9 @@ export function LoginComponent() {
               placeholder="Email"
             />
             {validationErrors.emailError && (
-              <p className="text-danger">{validationErrors.emailError}</p>
+              <p className="text-danger text-center">
+                {validationErrors.emailError}
+              </p>
             )}
           </div>
         </div>
@@ -97,7 +99,9 @@ export function LoginComponent() {
               placeholder="Password"
             />
             {validationErrors.passwordError && (
-              <p className="text-danger">{validationErrors.passwordError}</p>
+              <p className="text-danger text-center">
+                {validationErrors.passwordError}
+              </p>
             )}
           </div>
         </div>
