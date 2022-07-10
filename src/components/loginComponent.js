@@ -20,7 +20,7 @@ export function LoginComponent() {
           : "",
         passwordError:
           loginData.password.length < 8
-            ? "please enter a password at least 8 char "
+            ? "password should be at least 8 char with a special char and capital with letter "
             : "",
       }),
     [loginData]

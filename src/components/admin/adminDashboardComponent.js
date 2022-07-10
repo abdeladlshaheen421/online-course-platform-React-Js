@@ -1,3 +1,9 @@
+import { AdminNavbarComponent } from "./adminNavbarComponent";
+
 export function AdminDashboardComponent() {
-  return <div>adminDashboard</div>;
+  return (
+    <div>
+      <AdminNavbarComponent />
+    </div>
+  );
 }

@@ -9,18 +9,35 @@ import { AdminDashboardComponent } from "./components/admin/adminDashboardCompon
 import { UserDashboardComponent } from "./components/user/userDashboardComponent";
 import { ProtectAdminRoute } from "./guards/adminGuard";
 import { ProtectUserRoute } from "./guards/userGuard";
-import { LoggedOut } from "./guards/authGuard";
+import { LoggedIn, Loggedout } from "./guards/authGuard";
 function App() {
   return (
     <div>
       <Router>
         <Routes>
           {/* Login and register Routes*/}
-          <Route path="" element={<LoggedOut />}>
-            <Route index path="/login" exact element={<LoginComponent />} />
-            <Route path="/register" exact element={<RegisterComponent />} />
-          </Route>
-          {/* categories and Courses routes */}
+
+          <Route
+            index
+            path="/login"
+            exact
+            element={
+              <LoggedIn>
+                <LoginComponent />
+              </LoggedIn>
+            }
+          />
+          <Route
+            path="/register"
+            exact
+            element={
+              <LoggedIn>
+                <RegisterComponent />
+              </LoggedIn>
+            }
+          />
+
+          {/* categories and Coursesyyy */}
           <Route path="/categories" exact element={<CategoriesComponent />} />
           <Route path="/courses" exact element={<CoursesComponent />} />
           {/*user routes */}
@@ -28,9 +45,11 @@ function App() {
             exact
             path="/user"
             element={
-              <ProtectUserRoute>
-                <UserDashboardComponent />
-              </ProtectUserRoute>
+              <Loggedout>
+                <ProtectUserRoute>
+                  <UserDashboardComponent />
+                </ProtectUserRoute>
+              </Loggedout>
             }
           />
           {/* admin routes*/}
@@ -38,9 +57,11 @@ function App() {
             exact
             path="/admin"
             element={
-              <ProtectAdminRoute>
-                <AdminDashboardComponent />
-              </ProtectAdminRoute>
+              <Loggedout>
+                <ProtectAdminRoute>
+                  <AdminDashboardComponent />
+                </ProtectAdminRoute>
+              </Loggedout>
             }
           />
           {/* unauthorized route */}
